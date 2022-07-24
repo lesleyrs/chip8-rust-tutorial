@@ -28,7 +28,7 @@ async function run() {
         chip8.keypress(evt, false)
     })
 
-    input.addEventListener("click", function(evt) {
+    input.addEventListener("change", function(evt) {
         // Stop previous game from rendering, if one exists
         if (anim_frame != 0) {
             window.cancelAnimationFrame(anim_frame)
