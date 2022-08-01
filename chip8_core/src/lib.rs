@@ -1,4 +1,4 @@
-use rand::random; // Rng;
+use rand::Rng;
 
 pub const SCREEN_WIDTH: usize = 64;
 pub const SCREEN_HEIGHT: usize = 32;
@@ -286,7 +286,7 @@ impl Emu {
             (0xC, _, _, _) => {
                 let x = digit2 as usize;
                 let nn = (op & 0xFF) as u8;
-                let rng: u8 = random(); // thread_rng().gen();
+                let rng: u8 = rand::thread_rng().gen();
                 self.v_reg[x] = rng & nn;
             },
             // DRAW
@@ -421,7 +421,7 @@ impl Emu {
                     self.v_reg[idx] = self.ram[i + idx];
                 }
             },
-            (_, _, _, _) => unimplemented!("Unimplemented opcode: {}", op), // :#04x
+            (_, _, _, _) => unimplemented!("Unimplemented opcode: {:#04x}", op),
         }
     }
 }
